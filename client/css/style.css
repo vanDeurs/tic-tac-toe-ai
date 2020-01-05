@@ -1,0 +1,37 @@
+* {
+    margin: 0px;
+  }
+
+  body {
+      height: 100vh;
+      display: grid;
+      justify-items: center;
+      align-items: center;
+  }
+  
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    background: #fff;
+    justify-items: center;
+    align-items: center;
+    height: 50vh;
+    width: 50vw;
+    color: #444;
+  }
+  
+  .box {
+    background-color: #444;
+    width: 50%;
+    height: 50%;
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
+
+  .box:hover {
+      cursor: pointer;
+      background: #333;
+  }

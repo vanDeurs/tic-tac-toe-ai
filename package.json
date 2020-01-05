@@ -1,0 +1,28 @@
+{
+  "name": "tic-tac-toe-ai",
+  "version": "1.0.0",
+  "description": "A tic-tac-toe game with an AI twist.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vanDeurs/tic-tac-toe-ai.git"
+  },
+  "keywords": [
+    "AI"
+  ],
+  "author": "Alexander Wilson van Deurs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vanDeurs/tic-tac-toe-ai/issues"
+  },
+  "homepage": "https://github.com/vanDeurs/tic-tac-toe-ai#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
