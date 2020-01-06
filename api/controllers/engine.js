@@ -23,4 +23,54 @@
    * - Send back response to client.
    */
 
+
+exports.generateBoard = () => {
+    const board = {
+        column1: [{value: '', index: 0}, {value: '', index: 1}, {value: '', index: 2}],
+        column2: [{value: '', index: 3}, {value: '', index: 4}, {value: '', index: 5}],
+        column3: [{value: '', index: 6}, {value: '', index: 7}, {value: '', index: 8}]
+    };
+    return board;
+}
+
+exports.makePlayerMove = (positionId, board, player) => {
+    if (positionId <= 2) {
+        board.column1[positionId].value = player;
+    } else if (positionId <= 5) {
+        board.column2[positionId - 3].value = player;
+    } else if (positionId <= 8) {
+        board.column3[positionId - 6].value = player;
+    } else {
+        return null;
+    }
+    return board;
+}
+
+exports.decideTurn = (lastPlayer) => {
+    return lastPlayer === 'X' ? 'O' : 'X';
+}
+
+exports.isGameOver = (board, player) => {
+    // Returns true if game is over
+    // Start by checking for a winner
+    const {column1, column2, column3} = board;
+        // Check vertical
+    if (   column1[0].value === column1[1].value && column1[2].value === player && column1[0].value === column1[2].value
+        || column2[0].value === column2[1].value && column2[2].value === player && column2[0].value === column2[2].value
+        || column3[0].value === column3[1].value && column3[2].value === player && column3[0].value === column3[2].value
+        // Check horizontal
+        || column1[0].value === column2[0].value && column3[0].value === player && column1[0].value === column3[0].value
+        || column1[1].value === column2[1].value && column3[1].value === player && column1[1].value === column3[1].value
+        || column1[2].value === column2[2].value && column3[2].value === player && column1[2].value === column3[2].value
+        // Check diagonal
+        || column1[0].value === column2[1].value && column3[2].value === player && column1[0].value === column3[2].value
+        || column3[0].value === column2[1].value && column1[2].value === player && column3[0].value === column1[2].value
+    ) {
+        return true;
+    } else if ((column1.includes() || column2.includes('') || column3.includes(''))) {
+        // Board is full
+        return true;
+    }
+    return false;
+}
    

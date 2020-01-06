@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <title>Tic Tac Toe AI Game</title>
+    <link rel="stylesheet" href="../css/style.css"/>
+</head>
+    <body>
+        <h1>TIC TAC TOE</h1>
+        <div>
+            <button id="start-game-button">Start game</button>
+        </div>
+        <div id="board-place"></div>
+        <div id="original-board-template">
+            <script id="board-template" type="text/template">
+                <div id="board" class="wrapper">{{#board}}
+                    <div class="column">{{#column1}}
+                        <div class="box">{{#.}}
+                            <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
+                        {{/.}}</div>
+                    {{/column1}}</div>
+                    <div class="column">{{#column2}}
+                        <div class="box">{{#.}}
+                            <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
+                        {{/.}}</div>
+                    {{/column2}}</div>
+                    <div class="column">{{#column3}}
+                        <div class="box">{{#.}}
+                            <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
+                        {{/.}}</div>
+                    {{/column3}}</div>
+                {{/board}}</div>
+            </script>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script type="text/javascript" src="../js/game.js"></script>
+        <script src="../js/libs/mustache.js"></script>
+        </body>
+</html>
