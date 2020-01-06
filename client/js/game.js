@@ -34,11 +34,14 @@ const state = {
 }
 
 function startNewGame () {
+    removeClass('active');
+    document.getElementById('result').innerHTML = '';
     return axios.post('http://localhost:3000/api/game/start').then((data) => {
         console.log('DATA: ', data);
-        state.board = data.data.board;
         state.ongoingGame = !state.ongoingGame;
         state.player = 'X';
+        state.board = data.data.board;
+        updateBoard(data.data.board);
     });
 }
 
@@ -53,23 +56,32 @@ function updateBoard (board) {
                 document.getElementById(board[key][i].index).innerHTML = board[key][i].value; 
             }
         }
-    }}
+}}
+
+function removeClass (className) {
+    for (let i = 0; i < 9; i++) {
+        document.getElementById(i).classList.remove(className);
+    }
+}
 
 
 function makePlayerMove (positionId, player, board) {
-    console.log('Player: ', player);
-    $(positionId).addClass('boxFull');
+    const element = document.getElementById(positionId);
+    if (element.classList.contains('active')) return;
+
+    element.classList.add('active');
     axios.post('http://localhost:3000/api/game/', {positionId, player, board})
     .then((data) => {
-        console.log('DATA: ', data);
+        console.log('Data: ', data);
         state.board = data.data.board;
-        state.player = data.data.nextPlayer;
-        state.ongoingGame = !data.data.isGameOver;
         updateBoard(state.board);
-    }).then(() => {
-        if (!state.ongoingGame) {
+        if (data.data.result.draw || data.data.result.winner) {
+            state.ongoingGame = false;
+            let content = data.data.result.draw ? 'The game is a draw.' : `Player ${state.player} won the game!`
+            document.getElementById('result').innerHTML = content;
             state.player = 'X';
-            alert('The game has been finished!');
+        } else {
+            state.player = data.data.nextPlayer;
         }
-    });
+    }).catch(err => console.log('Err: ', err));
 }

@@ -12,28 +12,27 @@
         <div>
             <button id="start-game-button">Start game</button>
         </div>
+        <h2 id="result"></h2>
         <div id="board-place"></div>
-        <div id="original-board-template">
-            <script id="board-template" type="text/template">
-                <div id="board" class="wrapper">{{#board}}
-                    <div class="column">{{#column1}}
-                        <div class="box">{{#.}}
-                            <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
-                        {{/.}}</div>
-                    {{/column1}}</div>
-                    <div class="column">{{#column2}}
-                        <div class="box">{{#.}}
-                            <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
-                        {{/.}}</div>
-                    {{/column2}}</div>
-                    <div class="column">{{#column3}}
-                        <div class="box">{{#.}}
-                            <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
-                        {{/.}}</div>
-                    {{/column3}}</div>
-                {{/board}}</div>
-            </script>
-        </div>
+        <script id="board-template" type="text/template">
+            <div id="board" class="wrapper">{{#board}}
+                <div class="column">{{#column1}}
+                    <div class="box">{{#.}}
+                        <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
+                    {{/.}}</div>
+                {{/column1}}</div>
+                <div class="column">{{#column2}}
+                    <div class="box">{{#.}}
+                        <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
+                    {{/.}}</div>
+                {{/column2}}</div>
+                <div class="column">{{#column3}}
+                    <div class="box">{{#.}}
+                        <span class="square" name="{{value}}" id="{{index}}">{{value}}</span>
+                    {{/.}}</div>
+                {{/column3}}</div>
+            {{/board}}</div>
+        </script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script type="text/javascript" src="../js/game.js"></script>
         <script src="../js/libs/mustache.js"></script>

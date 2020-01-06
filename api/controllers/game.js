@@ -10,13 +10,13 @@ exports.makePlayerMove = asyncWrapper(async (req, res) => {
     const {positionId, player, board} = req.body;
     
     const updatedBoard = makePlayerMove(positionId, board, player);
-    const gameOver = isGameOver(board, player);
     const nextPlayer = decideTurn(player);
+    const result = isGameOver(board, player);
 
     res.status(201).send({
         message: 'A move has been made.',
         board: updatedBoard,
-        isGameOver: gameOver,
+        result,
         nextPlayer
     });
 });

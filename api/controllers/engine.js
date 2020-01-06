@@ -51,9 +51,13 @@ exports.decideTurn = (lastPlayer) => {
 }
 
 exports.isGameOver = (board, player) => {
-    // Returns true if game is over
+    // Result.winner or result.draw will not equal undefined if game is over.
     // Start by checking for a winner
     const {column1, column2, column3} = board;
+    const result = {
+        winner: null,
+        draw: null
+    }
         // Check vertical
     if (   column1[0].value === column1[1].value && column1[2].value === player && column1[0].value === column1[2].value
         || column2[0].value === column2[1].value && column2[2].value === player && column2[0].value === column2[2].value
@@ -66,11 +70,24 @@ exports.isGameOver = (board, player) => {
         || column1[0].value === column2[1].value && column3[2].value === player && column1[0].value === column3[2].value
         || column3[0].value === column2[1].value && column1[2].value === player && column3[0].value === column1[2].value
     ) {
-        return true;
-    } else if ((column1.includes() || column2.includes('') || column3.includes(''))) {
-        // Board is full
-        return true;
+        result.winner = player;
+    } else {
+        // Find all empty squares and see if they are fewer or equal to 1
+        let emptySquares = 0;
+        for (let i in column1) {
+            if (column1[i].value === '') emptySquares++;
+        }
+        for (let i in column2) {
+            if (column2[i].value === '') emptySquares++;
+        }
+        for (let i in column3) {
+            if (column3[i].value === '') emptySquares++;
+        }
+        if (emptySquares <= 1) {
+            // Board is full
+            result.draw = true;
+        }
     }
-    return false;
+    return result;
 }
    
