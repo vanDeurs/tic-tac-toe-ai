@@ -9,14 +9,14 @@ $(document).ready(function() {
 });
 
 function initialize () {
-    state.template = $('#board-template').html();
+    const template = $('#board-template').html();
     const board = {
         column1: [{value: '', index: 0}, {value: '', index: 1}, {value: '', index: 2}],
         column2: [{value: '', index: 3}, {value: '', index: 4}, {value: '', index: 5}],
         column3: [{value: '', index: 6}, {value: '', index: 7}, {value: '', index: 8}]
     };
-    Mustache.parse(state.template);
-    const html = Mustache.render(state.template, {
+    Mustache.parse(template);
+    const html = Mustache.render(template, {
         board
     });
     $('#board-place').append(html);
@@ -28,8 +28,7 @@ function initialize () {
 const state = {
     ongoingGame: false,
     board: null,
-    player: null,
-    template: null
+    player: null
 }
 
 function startNewGame () {
@@ -62,7 +61,6 @@ function removeClass (className) {
         document.getElementById(i).classList.remove(className);
     }
 }
-
 
 function makePlayerMove (positionId, player, board) {
     const element = document.getElementById(positionId);
