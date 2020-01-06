@@ -1,7 +1,6 @@
 $(document).ready(function() {
     initialize();
     $(".box").click(function (e) {
-        console.log(e.target);
         makePlayerMove(e.target.id, state.player, state.board);
     });
     $('#start-game-button').click(function () {
