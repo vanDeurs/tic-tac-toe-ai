@@ -6,12 +6,15 @@ $(document).ready(function () {
 
 function animate (id) {
     // Get the correct card
+
     let container = $(".container")[id];
     let inner = $(".inner")[id];
-
-    let containers = $(".container");
-    let inners = $(".inner");
-    console.log('Containers: ', containers);
+    
+    // See if marked already, if so dont animate
+    if (inner.classList.contains('active')) {
+      console.log('Marked square.');
+      return;
+    };
   
     // Mouse stuff
     let mouse = {

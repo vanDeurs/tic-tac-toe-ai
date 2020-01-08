@@ -3,7 +3,7 @@ $(document).ready(function() {
     $(".box").click(function (e) {
         makePlayerMove(e.target.id, state.player, state.board);
     });
-    $('#start-game-button').click(function () {
+    $('#start-button').click(function () {
         startNewGame();
     });
 });
