@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Cute+Font&display=swap');
-
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
 * {
   margin:0;
   padding:0;
@@ -78,7 +78,65 @@ body {
   align-items: center;
   justify-content: center;
   color: black;
-  font-size: 4rem;
+  font-size: 11rem;
+  animation: fadein 2s;
+}
+
+.square h2 {
+  
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+#scoreboard {
+  width: 440px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Roboto Mono', monospace;
+  margin-bottom: 20px;
+}
+
+#score-wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  /* border: 1px solid red; */
+  /* justify-content: space-around; */
+}
+
+#score-wrapper h2 {
+  font-size: 2rem;
+}
+
+.ind-score-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
 }
 
 .box:hover {
@@ -86,4 +144,8 @@ body {
 }
 .active {
   /* cursor: not-allowed; */
+}
+
+#result {
+  font-size: 2.7rem;
 }

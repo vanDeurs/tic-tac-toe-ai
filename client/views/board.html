@@ -13,22 +13,44 @@
         <button id="start-button"><h2>Start game</h2></button>
         <h1 id="result"></h1>
         <div id="board-place"></div>
+        <div id="scoreboard">
+            <div id="score-wrapper">
+                <div class="ind-score-wrapper">
+                    <h2>PLAYER(X)</h2>
+                    <h2>0</h2>
+                </div>
+                <div class="ind-score-wrapper">
+                    <h2>TIE</h2>
+                    <h2>0</h2>
+                </div>
+                <div class="ind-score-wrapper">
+                    <h2>AI(O)</h2>
+                    <h2>0</h2>
+                </div>
+            </div>
+        </div>
         <div id="original-board-template">
             <script id="board-template" type="text/template">
                 <div id="board" class="wrapper">{{#board}}
                     <div class="column">{{#column1}}
                         <div class="box container">{{#.}}
-                            <span class="square inner" name="{{value}}" id="{{index}}">{{value}}</span>
+                            <span class="square inner" name="{{value}}" id="{{index}}">
+                                <h2>{{value}}</h2>
+                            </span>
                         {{/.}}</div>
                     {{/column1}}</div>
                     <div class="column">{{#column2}}
                         <div class="box container">{{#.}}
-                            <span class="square inner" name="{{value}}" id="{{index}}">{{value}}</span>
+                            <span class="square inner" name="{{value}}" id="{{index}}">
+                                <h2>{{value}}</h2>
+                            </span>
                         {{/.}}</div>
                     {{/column2}}</div>
                     <div class="column">{{#column3}}
                         <div class="box container">{{#.}}
-                            <span class="square inner" name="{{value}}" id="{{index}}">{{value}}</span>
+                            <span class="square inner" name="{{value}}" id="{{index}}">
+                                <h2>{{value}}</h2>
+                            </span>
                         {{/.}}</div>
                     {{/column3}}</div>
                 {{/board}}</div>
