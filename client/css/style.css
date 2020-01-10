@@ -123,12 +123,11 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  /* border: 1px solid red; */
-  /* justify-content: space-around; */
+  width: 440px;
 }
 
 #score-wrapper h2 {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .ind-score-wrapper {
@@ -136,7 +135,16 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 33%;
+  width: 33.3333%;
+}
+
+.side-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.player-name {
+  margin-right: 5px;
 }
 
 .box:hover {

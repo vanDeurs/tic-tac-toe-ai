@@ -12,22 +12,33 @@
         <h1 id="header">TIC TAC TOE</h1>
         <button id="start-button"><h2>Start game</h2></button>
         <h1 id="result"></h1>
+
         <div id="board-place"></div>
+        <div id="scoreboard-place"></div>
+
         <div id="scoreboard">
-            <div id="score-wrapper">
-                <div class="ind-score-wrapper">
-                    <h2>PLAYER(X)</h2>
-                    <h2>0</h2>
-                </div>
-                <div class="ind-score-wrapper">
-                    <h2>TIE</h2>
-                    <h2>0</h2>
-                </div>
-                <div class="ind-score-wrapper">
-                    <h2>AI(O)</h2>
-                    <h2>0</h2>
-                </div>
-            </div>
+            <script id="scoreboard-template" type="text/template">
+                <div id="score-wrapper">{{#scoreboard}}
+                    <div class="ind-score-wrapper">
+                        <div class="side-wrapper">
+                            <h2 id="{{player1.name}}" class="player-name">{{player1.name}}</h2>
+                            <h2 id="{{player1.side}}">({{player1.side}})</h2>
+                        </div>
+                        <h2 id="player1-score">{{player1.score}}</h2>
+                    </div>
+                    <div class="ind-score-wrapper">
+                        <h2 id="{{tie.name}}">{{tie.name}}</h2>
+                        <h2 id="tie-score">{{tie.score}}</h2>
+                    </div>
+                    <div class="ind-score-wrapper">
+                        <div class="side-wrapper">
+                            <h2 id="{{player1.name}}" class="player-name">{{player2.name}}</h2>
+                            <h2 id="{{player1.side}}">({{player2.side}})</h2>
+                        </div>
+                        <h2 id="player2-score">{{player2.score}}</h2>
+                    </div>
+                {{/scoreboard}}</div>
+            </script>
         </div>
         <div id="original-board-template">
             <script id="board-template" type="text/template">

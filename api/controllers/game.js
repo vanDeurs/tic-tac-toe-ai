@@ -7,16 +7,17 @@ const {
 } = require('./engine');
 
 exports.makePlayerMove = asyncWrapper(async (req, res) => {
-    const {positionId, player, board} = req.body;
+    const {positionId, player, board, scoreboard} = req.body;
     
-    const updatedBoard = makePlayerMove(positionId, board, player);
+    const updatedBoard = makePlayerMove(positionId, board, player, scoreboard);
     const nextPlayer = decideTurn(player);
-    const result = isGameOver(board, player);
+    const results = isGameOver(board, player, scoreboard);
 
     res.status(201).send({
         message: 'A move has been made.',
         board: updatedBoard,
-        result,
+        scoreboard: results.scoreboard,
+        result: results.result,
         nextPlayer
     });
 });

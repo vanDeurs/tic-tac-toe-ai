@@ -8,7 +8,7 @@
 
  /**
   * EVALUATING POST-MOVE STAGE:
-  * - Evaluate if the game is completed: either won or drawn.
+  * - Evaluate if the game is completed: either won or tien.
   * - Evaluate who's turn it is.
   * - If it is the AI's turn, let the AI work.
   * - Send back the AI's move to the client.
@@ -50,13 +50,13 @@ exports.decideTurn = (lastPlayer) => {
     return lastPlayer === 'X' ? 'O' : 'X';
 }
 
-exports.isGameOver = (board, player) => {
-    // Result.winner or result.draw will not equal undefined if game is over.
+exports.isGameOver = (board, player, scoreboard) => {
+    // Result.winner or result.tie will not equal undefined if game is over.
     // Start by checking for a winner
     const {column1, column2, column3} = board;
     const result = {
         winner: null,
-        draw: null
+        tie: null
     }
         // Check vertical
     if (   column1[0].value === column1[1].value && column1[2].value === player && column1[0].value === column1[2].value
@@ -85,9 +85,25 @@ exports.isGameOver = (board, player) => {
         }
         if (emptySquares <= 1) {
             // Board is full
-            result.draw = true;
+            result.tie = true;
         }
     }
-    return result;
+
+    if (result.tie) {
+        scoreboard.tie.score++;
+    } else if (result.winner) {
+        if (scoreboard.player1.side === player) {
+            scoreboard.player1.score++;
+        } else {
+            scoreboard.player2.score++;
+        }
+    }
+
+    const results = {
+        result,
+        scoreboard
+    }
+
+    return results;
 }
    
