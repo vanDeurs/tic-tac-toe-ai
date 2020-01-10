@@ -5,7 +5,8 @@
 .inner {
     border-radius: 5px;
     background-color: #f06ce1;
-    box-shadow: 2px 2px 50px rgba(30, 30, 30, 0.6);
+    border: 1px solid #db4fcbc4;
+    box-shadow: 2px 2px 50px rgba(39, 31, 39, 0.6);
     transition: transform 0.5s;
     -webkit-transition: transform 0.5s;
     -moz-transition: transform 0.5s;
